@@ -25,10 +25,15 @@ body {
 }
 
 #gridSizeBtn {
-    margin: 0 0 20px 0;;
-    width: fit-content;
-    background-color: gray;
+    margin: 0 0 10px 0;;
+    background-color: rgb(93, 179, 245);
     color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#gridSizeBtn:hover {
+    background-color: rgb(60, 152, 222);
 }
 
 div {
