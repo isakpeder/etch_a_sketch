@@ -1,4 +1,5 @@
 const container = document.getElementById("container");
+const gridSizeBtn = document.getElementById("gridSizeBtn");
 
 function getRandomRgbColor() {
     const r = Math.floor(Math.random() * 256);
@@ -8,19 +9,33 @@ function getRandomRgbColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-const createGrid = () => {
-    for (let i = 0; i < 16 * 16; i++)
+const createGrid = (size) => {
+    container.innerHTML = "";
+    for (let i = 0; i < size * size; i++)
     {
         const box = document.createElement("div");
         box.classList.add('box');
-        box.style.width = "40px";
-        box.style.height = "40px";
+        const boxSize = (640 / size);
+        box.style.width = boxSize + "px";
+        box.style.height = boxSize + "px";
         container.appendChild(box);
 
         box.addEventListener('mouseenter', () => {
             box.style.backgroundColor = getRandomRgbColor();
         })
+
+        
     }
 }
 
-createGrid();
+createGrid(10);
+
+gridSizeBtn.addEventListener('click', () => {
+    const sideLength = prompt('Squares per side');
+    if (sideLength > 100) {
+        alert("Maximum number is 100. Please try Again.");
+    }
+    else {
+        createGrid(sideLength);
+    }
+})
